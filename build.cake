@@ -24,6 +24,7 @@ Task("libs")
 Task("nugets")
 	.IsDependentOn("prepare")
 	.IsDependentOn("libs")
+	.IsDependentOn("docs")
 	.Does(() =>
 {
 	MSBuild("./Xamarin.Essentials/Xamarin.Essentials.csproj", new MSBuildSettings()
@@ -67,6 +68,17 @@ Task("samples")
 		.EnableBinaryLogger("./output/binlogs/samples.binlog")
 		.SetConfiguration("Release")
 		.WithRestore());
+});
+
+Task("docs")
+	.IsDependentOn("libs")
+	.Does(() =>
+{
+	MSBuild("./Xamarin.Essentials/Xamarin.Essentials.csproj", new MSBuildSettings()
+		.EnableBinaryLogger("./output/binlogs/nugets.binlog")
+		.SetConfiguration("Release")
+		.WithRestore()
+		.WithTarget("mdocupdatedocs"));
 });
 
 Task("ci")
