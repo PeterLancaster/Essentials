@@ -125,7 +125,3 @@ stages:
           preBuildSteps:
             - bash: sh -c "echo \"y\" | $ANDROID_HOME/tools/bin/sdkmanager \"$ANDROID_EMU_TARGET\""
               displayName: Install the Android emulators
-            # - bash: |
-            #     PATH="$ANDROID_HOME/tools/bin:$PATH"
-            #     PATH="$ANDROID_HOME/emulator:$PATH"
-            #   displayName: 'Run Device Tests - Android'

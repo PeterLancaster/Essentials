@@ -31,6 +31,11 @@ var TCP_LISTEN_HOST = System.Net.Dns.GetHostEntry(System.Net.Dns.GetHostName())
 
 var ANDROID_HOME = EnvironmentVariable("ANDROID_HOME");
 
+System.Environment.SetEnvironmentVariable ("PATH",
+    $"{ANDROID_HOME}/tools/bin" + System.IO.Path.PathSeparator +
+    $"{ANDROID_HOME}/emulator" + System.IO.Path.PathSeparator +
+    EnvironmentVariable ("PATH"));
+
 Func<int, FilePath, Task> DownloadTcpTextAsync = (int port, FilePath filename) =>
     System.Threading.Tasks.Task.Run (() => {
         var tcpListener = new System.Net.Sockets.TcpListener(System.Net.IPAddress.Any, port);
