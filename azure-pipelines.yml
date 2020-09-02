@@ -16,7 +16,7 @@ variables:
   GIT_BRANCH_NAME: $(Build.SourceBranchName)
   # test devices
   IOS_SIM_NAME: 'iPhone 11'
-  IOS_SIM_RUNTIME: 'com.apple.CoreSimulator.SimRuntime.iOS-13-3'
+  IOS_SIM_RUNTIME: 'com.apple.CoreSimulator.SimRuntime.iOS-13-6'
   ANDROID_EMU_TARGET: 'system-images;android-26;google_apis;x86'
   ANDROID_EMU_DEVICE: 'Nexus 5X'
 
