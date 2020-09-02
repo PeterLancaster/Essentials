@@ -6,22 +6,22 @@
 var TARGET = Argument("target", "Default");
 
 var IOS_SIM_NAME = EnvironmentVariable("IOS_SIM_NAME") ?? "iPhone 11";
-var IOS_SIM_RUNTIME = EnvironmentVariable("IOS_SIM_RUNTIME") ?? "com.apple.CoreSimulator.SimRuntime.iOS-13-1";
+var IOS_SIM_RUNTIME = EnvironmentVariable("IOS_SIM_RUNTIME") ?? "com.apple.CoreSimulator.SimRuntime.iOS-13-6";
 var IOS_PROJ = "./DeviceTests.iOS/DeviceTests.iOS.csproj";
 var IOS_BUNDLE_ID = "com.xamarin.essentials.devicetests";
 var IOS_IPA_PATH = "./DeviceTests.iOS/bin/iPhoneSimulator/Release/XamarinEssentialsDeviceTestsiOS.app";
-var IOS_TEST_RESULTS_PATH = "./xunit-ios.xml";
+var IOS_TEST_RESULTS_PATH = MakeAbsolute ((FilePath)"../output/xunit-ios.xml");
 
 var ANDROID_PROJ = "./DeviceTests.Android/DeviceTests.Android.csproj";
 var ANDROID_APK_PATH = "./DeviceTests.Android/bin/Release/com.xamarin.essentials.devicetests-Signed.apk";
-var ANDROID_TEST_RESULTS_PATH = "./xunit-android.xml";
+var ANDROID_TEST_RESULTS_PATH = MakeAbsolute ((FilePath)"../output/xunit-android.xml");
 var ANDROID_AVD = EnvironmentVariable("ANDROID_AVD") ?? "CABOODLE";
 var ANDROID_PKG_NAME = "com.xamarin.essentials.devicetests";
-var ANDROID_EMU_TARGET = EnvironmentVariable("ANDROID_EMU_TARGET") ?? "system-images;android-29;google_apis_playstore;x86_64";
-var ANDROID_EMU_DEVICE = EnvironmentVariable("ANDROID_EMU_DEVICE") ?? "pixel";
+var ANDROID_EMU_TARGET = EnvironmentVariable("ANDROID_EMU_TARGET") ?? "system-images;android-26;google_apis;x86";
+var ANDROID_EMU_DEVICE = EnvironmentVariable("ANDROID_EMU_DEVICE") ?? "Nexus 5X";
 
 var UWP_PROJ = "./DeviceTests.UWP/DeviceTests.UWP.csproj";
-var UWP_TEST_RESULTS_PATH = "./xunit-uwp.xml";
+var UWP_TEST_RESULTS_PATH = MakeAbsolute ((FilePath)"../output/xunit-uwp.xml");
 var UWP_PACKAGE_ID = "ec0cc741-fd3e-485c-81be-68815c480690";
 
 var TCP_LISTEN_TIMEOUT = 240;
@@ -54,9 +54,10 @@ Func<int, FilePath, Task> DownloadTcpTextAsync = (int port, FilePath filename) =
 
         try {
             var tcpClient = tcpListener.AcceptTcpClient();
-            var fileName = MakeAbsolute (filename).FullPath;
+            filename = MakeAbsolute (filename);
+            EnsureDirectoryExists (filename.GetDirectory ());
 
-            using (var file = System.IO.File.Open(fileName, System.IO.FileMode.Create))
+            using (var file = System.IO.File.Open(filename.FullPath, System.IO.FileMode.Create))
             using (var stream = tcpClient.GetStream())
                 stream.CopyTo(file);
 
