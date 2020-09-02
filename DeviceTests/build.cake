@@ -10,18 +10,18 @@ var IOS_SIM_RUNTIME = EnvironmentVariable("IOS_SIM_RUNTIME") ?? "com.apple.CoreS
 var IOS_PROJ = "./DeviceTests.iOS/DeviceTests.iOS.csproj";
 var IOS_BUNDLE_ID = "com.xamarin.essentials.devicetests";
 var IOS_IPA_PATH = "./DeviceTests.iOS/bin/iPhoneSimulator/Release/XamarinEssentialsDeviceTestsiOS.app";
-var IOS_TEST_RESULTS_PATH = MakeAbsolute ((FilePath)"../output/xunit-ios.xml");
+var IOS_TEST_RESULTS_PATH = MakeAbsolute ((FilePath)"../output/iOS_DeviceTests_TestResults.xml");
 
 var ANDROID_PROJ = "./DeviceTests.Android/DeviceTests.Android.csproj";
 var ANDROID_APK_PATH = "./DeviceTests.Android/bin/Release/com.xamarin.essentials.devicetests-Signed.apk";
-var ANDROID_TEST_RESULTS_PATH = MakeAbsolute ((FilePath)"../output/xunit-android.xml");
+var ANDROID_TEST_RESULTS_PATH = MakeAbsolute ((FilePath)"../output/Android_DeviceTests_TestResults.xml");
 var ANDROID_AVD = EnvironmentVariable("ANDROID_AVD") ?? "CABOODLE";
 var ANDROID_PKG_NAME = "com.xamarin.essentials.devicetests";
 var ANDROID_EMU_TARGET = EnvironmentVariable("ANDROID_EMU_TARGET") ?? "system-images;android-26;google_apis;x86";
 var ANDROID_EMU_DEVICE = EnvironmentVariable("ANDROID_EMU_DEVICE") ?? "Nexus 5X";
 
 var UWP_PROJ = "./DeviceTests.UWP/DeviceTests.UWP.csproj";
-var UWP_TEST_RESULTS_PATH = MakeAbsolute ((FilePath)"../output/xunit-uwp.xml");
+var UWP_TEST_RESULTS_PATH = MakeAbsolute ((FilePath)"../output/UWP_DeviceTests_TestResults.xml");
 var UWP_PACKAGE_ID = "ec0cc741-fd3e-485c-81be-68815c480690";
 
 var TCP_LISTEN_TIMEOUT = 240;
