@@ -17,7 +17,7 @@ var ANDROID_APK_PATH = "./DeviceTests.Android/bin/Release/com.xamarin.essentials
 var ANDROID_TEST_RESULTS_PATH = MakeAbsolute ((FilePath)"../output/test-results/android-TestResults.xml");
 var ANDROID_AVD = EnvironmentVariable("ANDROID_AVD") ?? "CABOODLE";
 var ANDROID_PKG_NAME = "com.xamarin.essentials.devicetests";
-var ANDROID_EMU_TARGET = EnvironmentVariable("ANDROID_EMU_TARGET") ?? "system-images;android-26;google_apis;x86";
+var ANDROID_EMU_TARGET = EnvironmentVariable("ANDROID_EMU_TARGET") ?? "system-images;android-29;google_apis_playstore;x86";
 var ANDROID_EMU_DEVICE = EnvironmentVariable("ANDROID_EMU_DEVICE") ?? "Nexus 5X";
 
 var UWP_PROJ = "./DeviceTests.UWP/DeviceTests.UWP.csproj";
