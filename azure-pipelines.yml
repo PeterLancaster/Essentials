@@ -67,11 +67,6 @@ stages:
       - template: .ci/build.yml@components
         parameters:
           areaPath: 'DevDiv\Xamarin SDK\Build and Tools'
-
-  - stage: sign
-    displayName: Sign the NuGets for release
-    dependsOn: [ 'build' ]
-    jobs:
       - ${{ if eq(variables['System.TeamProject'], 'devdiv') }}:
         - template: sign-artifacts/jobs/v1.yml@internal-templates
           parameters:
