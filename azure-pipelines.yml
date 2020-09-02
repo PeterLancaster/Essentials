@@ -104,6 +104,7 @@ stages:
       - template: .ci/build.yml@components
         parameters:
           name: devicetests_ios
+          runChecks: false
           displayName: Run iOS Device Tests
           windowsImage: ''
           areaPath: 'DevDiv\Xamarin SDK\Build and Tools'
@@ -114,6 +115,7 @@ stages:
       - template: .ci/build.yml@components
         parameters:
           name: devicetests_android
+          runChecks: false
           displayName: Run Android Device Tests
           windowsImage: ''
           areaPath: 'DevDiv\Xamarin SDK\Build and Tools'
