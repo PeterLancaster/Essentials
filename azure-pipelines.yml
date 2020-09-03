@@ -113,11 +113,11 @@ stages:
           name: devicetests_android
           runChecks: false
           displayName: Run Android Device Tests
-          windowsImage: ''
+          macosImage: ''
           areaPath: 'DevDiv\Xamarin SDK\Build and Tools'
           verbosity: diagnostic
           cakeFile: DeviceTests/build.cake
           cakeTarget: test-android-emu
           preBuildSteps:
-            - bash: sh -c "echo \"y\" | $ANDROID_HOME/tools/bin/sdkmanager \"$ANDROID_EMU_TARGET\""
+            - pwsh: cmd /c "echo `"y`" | %ANDROID_HOME%\tools\bin\sdkmanager.bat `"%ANDROID_EMU_TARGET%`""
               displayName: Install the Android emulators
