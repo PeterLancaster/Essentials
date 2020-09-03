@@ -119,5 +119,5 @@ stages:
           cakeFile: DeviceTests/build.cake
           cakeTarget: test-android-emu
           preBuildSteps:
-            - pwsh: cmd /c "echo `"y`" | %ANDROID_HOME%\tools\bin\sdkmanager.bat `"%ANDROID_EMU_TARGET%`""
+            - pwsh: cmd /c "echo `"y`" | $env:ANDROID_HOME\tools\bin\sdkmanager.bat `"$env:ANDROID_EMU_TARGET`""
               displayName: Install the Android emulators
