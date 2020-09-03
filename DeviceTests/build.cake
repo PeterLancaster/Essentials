@@ -33,6 +33,7 @@ var ANDROID_HOME = EnvironmentVariable("ANDROID_HOME");
 
 System.Environment.SetEnvironmentVariable ("PATH",
     $"{ANDROID_HOME}/tools/bin" + System.IO.Path.PathSeparator +
+    $"{ANDROID_HOME}/platform-tools/bin" + System.IO.Path.PathSeparator +
     $"{ANDROID_HOME}/emulator" + System.IO.Path.PathSeparator +
     EnvironmentVariable ("PATH"));
 
